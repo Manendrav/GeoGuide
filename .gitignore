@@ -2,5 +2,10 @@
 .venv
 .flaskenv
 
+node_modules
+
 venv
 __pycache__
+
+connection.py
+```

@@ -1,35 +1,50 @@
 import { useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 
 
 function App() {
   const [data, setData] = useState(null);
+  const [contentLoaded, setContentLoaded] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("http://127.0.0.1:5000/api");
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const jsonData = await response.json();
-        console.log('Received data:', jsonData);
-        setData(jsonData.message);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
+    const timeoutId = setTimeout(() => {
+      setContentLoaded(true);
+    }, 3000);
 
-    fetchData();
+    return () => clearTimeout(timeoutId);
   }, []);
 
   console.log('Data:', data);
 
   return (
-    <div>
-        <h1 className="text-3xl font-bold underline">
-          Hello Vite + React!
-        </h1>
-        <p>{data}</p>
+    <div data-theme='light' >
+      {
+        contentLoaded ? (
+          <div className="bg-img">
+            <nav className='bg-gray-100'>
+              <Navbar />
+            </nav>
+
+            <div className='min-h-screen max-w-6xl mx-auto p-3 overflow-hidden'>
+              <Outlet />
+            </div>
+
+            <footer className='bg-black text-white'>
+              <Footer />
+            </footer>
+          </div>
+        ) : (
+          <div className='flex justify-center items-center h-screen'>
+            <div className="leap-frog">
+              <div className="leap-frog__dot"></div>
+              <div className="leap-frog__dot"></div>
+              <div className="leap-frog__dot"></div>
+            </div>
+          </div>
+        )
+      }
     </div>
   )
 }
