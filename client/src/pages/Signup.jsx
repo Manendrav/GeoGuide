@@ -26,7 +26,7 @@ export default function Signup() {
                 dispatch( userRegister({ userData: userData }));                // set user in redux store
 
                 toast.success('Account Created Successfully!!!');
-                localStorage.setItem('user', JSON.stringify(userData));
+                localStorage.setItem('geo-user', JSON.stringify(userData));
                 navigate('/');
             } catch (error) {
                 console.error("Error occurred:", error);

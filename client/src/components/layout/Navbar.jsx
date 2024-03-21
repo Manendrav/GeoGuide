@@ -4,14 +4,21 @@ import Button from './Button';
 import Input from './Input';
 import { IoSunny } from "react-icons/io5";
 import { RiMoonClearFill } from "react-icons/ri";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function Navbar() {
 
-    
-    //const [status, setStatus] = React.useState(useSelector((state) => state.user.user));
-    const [status, setStatus] = useState(false);
+    const status = useSelector((state) => state.user.user);
+
     console.log(status);
+    const dispatch = useDispatch();
+
+
+    function logouthandler() {
+        console.log('logout')
+        dispatch(logout());
+        localStorage.removeItem('geo-user');
+    }
   
 
     return (
@@ -21,9 +28,11 @@ export default function Navbar() {
                    <Link to={'/'} ><h1 className="text-2xl font-semibold cursor-pointer">GEO-GUIDE</h1></Link> 
                 </div>
                 <div className="flex-none gap-5">
-                    <div className="form-control ">
-                        <Input placeholder="Search..." />
-                    </div>
+                    <ul className='flex gap-7 font-semibold uppercase text-sm'>
+                        <li className='cursor-pointer hover:text-purple-600'>Home</li>
+                        <li className='cursor-pointer hover:text-purple-600'>About</li>
+                        <li className='cursor-pointer hover:text-purple-600'>Contact</li>
+                    </ul>
 
                     <div>
                         {status ? (
@@ -33,15 +42,10 @@ export default function Navbar() {
                                         <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
                                     </div>
                                 </div>
-                                <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                                    <li>
-                                        <a className="justify-between">
-                                            Profile
-                                            <span className="badge">New</span>
-                                        </a>
-                                    </li>
-                                    <li><a>Settings</a></li>
-                                    <li><a>Logout</a></li>
+                                <ul className="mt-3 z-[1] px-5 gap-3 shadow menu menu-sm dropdown-content bg-base-100 rounded-md w-52">
+                                    <li className='cursor-pointer hover:text-purple-500'>Profile </li>
+                                    <li className='cursor-pointer hover:text-purple-500'>Settings</li>
+                                    <li onClick={()=>logouthandler()} className='cursor-pointer hover:text-purple-500'>Logout</li>
                                 </ul>
                             </div>
                         ) : (

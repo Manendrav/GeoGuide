@@ -18,6 +18,9 @@ function Login() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    const user = useSelector((state) => state.user.user);
+    console.log(user);
+
 
     async function login(data) {
         if (data) {
@@ -28,7 +31,7 @@ function Login() {
                 dispatch(userRegister({ userData: userData }));
 
                 toast.success('Login Successfully!!!');
-                localStorage.setItem('user', JSON.stringify(userData));
+                localStorage.setItem('geo-user', JSON.stringify(userData));
                 navigate('/');
             } catch (error) {
                 console.error("Error occurred:", error);
