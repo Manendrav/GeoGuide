@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   const [data, setData] = useState(null);

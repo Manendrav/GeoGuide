@@ -4,10 +4,14 @@ import Button from './Button';
 import Input from './Input';
 import { IoSunny } from "react-icons/io5";
 import { RiMoonClearFill } from "react-icons/ri";
+import { useSelector } from 'react-redux';
 
 export default function Navbar() {
 
-    const [status, setStatus] = React.useState(false);
+    
+    //const [status, setStatus] = React.useState(useSelector((state) => state.user.user));
+    const [status, setStatus] = useState(false);
+    console.log(status);
   
 
     return (

@@ -3,15 +3,41 @@ import { useForm } from 'react-hook-form';
 import Input from '../components/layout/Input';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '../components/layout/Button';
-
+import { registerRoute } from '../utils/APIRoutes';
+import toast from 'react-hot-toast';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { userRegister } from '../store/userSlice';
+import { useSelector } from 'react-redux';
 
 export default function Signup() {
 
     const { register, handleSubmit } = useForm();
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-    const signup = (data) => {
-        console.log(data);
+    async function signup(data) {
+        if (data) {
+            try {
+                const response = await axios.post(registerRoute, data);
+                const userData = response.data.user;
+
+                dispatch( userRegister({ userData: userData }));                // set user in redux store
+
+                toast.success('Account Created Successfully!!!');
+                localStorage.setItem('user', JSON.stringify(userData));
+                navigate('/');
+            } catch (error) {
+                console.error("Error occurred:", error);
+                toast.error("An error occurred while creating account");
+            }
+        }
+
+        if (data.checkbox === false) {
+            return alert('Please agree to the terms and conditions')
+        }
+
     }
 
     return (

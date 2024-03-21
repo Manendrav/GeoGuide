@@ -3,16 +3,38 @@ import { set, useForm } from 'react-hook-form'
 import Input from '../components/layout/Input';
 import Button from '../components/layout/Button';
 import { Link, useNavigate } from 'react-router-dom';
-import { FcGoogle } from "react-icons/fc";
+import toast from 'react-hot-toast';
+import { loginRoute } from '../utils/APIRoutes';
 
+import { useDispatch, useSelector } from 'react-redux';
+
+import axios from 'axios';
+import { userRegister } from '../store/userSlice';
 
 function Login() {
 
     const { register, handleSubmit } = useForm();
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-    const login = (data) => {
-        console.log(data);
+
+    async function login(data) {
+        if (data) {
+            try {
+                const response = await axios.post(loginRoute, data);
+                const userData = response.data.user;
+
+                dispatch(userRegister({ userData: userData }));
+
+                toast.success('Login Successfully!!!');
+                localStorage.setItem('user', JSON.stringify(userData));
+                navigate('/');
+            } catch (error) {
+                console.error("Error occurred:", error);
+                toast.error("Invalid Email or Password!!!");
+            }
+        }
     }
 
     return (
