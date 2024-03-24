@@ -11,7 +11,7 @@ import { MdExplore , MdOutlineMiscellaneousServices} from "react-icons/md";
 export default function Home() {
   return (
     <div>
-      <div className="flex flex-col min-h-[100dvh]">
+      <div className="flex flex-col min-h-[100dvh] max-w-6xl mx-auto">
         <main className="flex-1">
           <section className="w-full py-6 flex justify-center">
             <div className="container px-4 md:px-6 ">
@@ -24,7 +24,7 @@ export default function Home() {
                   </p>
 
                   <Button className='ml-4'>
-                    <Link to='/signup'>Get Started</Link>
+                    <Link to='/explore'>Get Started</Link>
                   </Button>
                 </div>
 
@@ -51,7 +51,7 @@ export default function Home() {
               <div className="flex flex-col items-center py-14 justify-center bg-white border rounded-xl shadow-xl p-6 hover:bg-[#bc76fd] text-gray-400 hover:text-white transition ease-in">
                 <div className="text-4xl mb-4 bg-purple-400 text-white rounded-full p-3">{<FaUsers size="0.9em" />}</div>
                 <h2 className="text-xl font-semibold mb-2 text-gray-800">Tailored Suggestions</h2>
-                <p className="py-2 px-6 ">Explore services that match your preferences, ensuring every recommendation is tailored to your individual tastes and requirements.</p>
+                <p className="py-2 px-7 ">Explore services that match your preferences, ensuring every recommendation is tailored to your individual tastes and requirements.</p>
               </div>
 
               <div className="flex flex-col items-center py-14  justify-center bg-white border rounded-xl shadow-xl p-6 hover:bg-[#bc76fd]  text-gray-400 hover:text-white transition ease-in">

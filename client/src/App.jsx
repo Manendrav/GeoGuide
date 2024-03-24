@@ -27,7 +27,7 @@ function App() {
               <Navbar />
             </nav>
 
-            <div className='min-h-screen max-w-6xl mx-auto p-3 overflow-hidden'>
+            <div className='min-h-screen overflow-hidden'>
               <Outlet />
             </div>
 
