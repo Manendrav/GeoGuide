@@ -168,8 +168,8 @@ export default function Home() {
                     </p>
                   </div>
                    <div className="mt-6 flex max-w-md gap-x-4">
-                    <label for="email-address" className="sr-only">Email address</label>
-                    <input id="email-address" name="email" type="email" autocomplete="email" required className="min-w-0 flex-auto rounded-lg border bg-white/5 px-3.5 py-2 text-gray-400 shadow-sm focus:outline-purple-400 sm:text-sm sm:leading-6" placeholder="Enter your email" />
+                    <label htmlFor="email-address" className="sr-only">Email address</label>
+                    <input id="email-address" name="email" type="email" autoComplete="email" required className="min-w-0 flex-auto rounded-lg border bg-white/5 px-3.5 py-2 text-gray-400 shadow-sm focus:outline-purple-400 sm:text-sm sm:leading-6" placeholder="Enter your email" />
                     <Button type="submit">Contact</Button>
                   </div>
                 </div>
