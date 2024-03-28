@@ -10,8 +10,6 @@ module.exports.register = async (req, res, next) => {
         
         const user = await User.create({ name, email, password: hashedPassword });
         delete user.password;
-
-        console.log(user);
         
         const { password: _, ...userWithoutPassword } = user.toObject();
         res.status(201).json({ user: userWithoutPassword });

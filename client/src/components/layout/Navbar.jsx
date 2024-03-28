@@ -1,17 +1,12 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Button from './Button';
-import Input from './Input';
-import { IoSunny } from "react-icons/io5";
-import { RiMoonClearFill } from "react-icons/ri";
 import { useDispatch, useSelector } from 'react-redux';
 import { userlogout } from '../../store/userSlice';
 
 export default function Navbar() {
 
     const status = useSelector((state) => state.user.user);
-
-    console.log(status);
     const dispatch = useDispatch();
 
 
@@ -30,7 +25,7 @@ export default function Navbar() {
                 </div>
                 <div className="flex-none gap-5">
                     <ul className='flex gap-7 font-semibold uppercase text-sm'>
-                        <li className='cursor-pointer hover:text-purple-600'>Home</li>
+                        <Link><li to={'/'} className='cursor-pointer hover:text-purple-600'>Home</li></Link> 
                         <li className='cursor-pointer hover:text-purple-600'>About</li>
                         <li className='cursor-pointer hover:text-purple-600'>Contact</li>
                     </ul>

@@ -7,8 +7,11 @@ import { FaUsers , FaMapLocationDot} from "react-icons/fa6";
 import { RiRoadMapFill } from "react-icons/ri";
 import { CgSearchFound } from "react-icons/cg";
 import { MdExplore , MdOutlineMiscellaneousServices} from "react-icons/md";
+import { useSelector } from 'react-redux';
 
 export default function Home() {
+  const status = useSelector((state) => state.user.user);
+
   return (
     <div>
       <div className="flex flex-col min-h-[100dvh] max-w-6xl mx-auto">
@@ -24,7 +27,7 @@ export default function Home() {
                   </p>
 
                   <Button className='ml-4'>
-                    <Link to='/explore'>Get Started</Link>
+                    <Link to={status ? "/explore" : "/login"  }>Get Started</Link>
                   </Button>
                 </div>
 
