@@ -5,6 +5,7 @@ import Input from './Input';
 import { IoSunny } from "react-icons/io5";
 import { RiMoonClearFill } from "react-icons/ri";
 import { useDispatch, useSelector } from 'react-redux';
+import { userlogout } from '../../store/userSlice';
 
 export default function Navbar() {
 
@@ -16,7 +17,7 @@ export default function Navbar() {
 
     function logouthandler() {
         console.log('logout')
-        dispatch(logout());
+        dispatch(userlogout());
         localStorage.removeItem('geo-user');
     }
   
@@ -45,7 +46,7 @@ export default function Navbar() {
                                 <ul className="mt-3 z-[1] px-5 gap-3 shadow menu menu-sm dropdown-content bg-base-100 rounded-md w-52">
                                     <li className='cursor-pointer hover:text-purple-500'>Profile </li>
                                     <li className='cursor-pointer hover:text-purple-500'>Settings</li>
-                                    <li onClick={()=>logouthandler()} className='cursor-pointer hover:text-purple-500'>Logout</li>
+                                    <Button onClick={logouthandler} className='cursor-pointer hover:text-purple-500'>Logout</Button>
                                 </ul>
                             </div>
                         ) : (
