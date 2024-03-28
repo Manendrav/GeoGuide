@@ -19,9 +19,6 @@ export default function LocationDetailes({ locationData , handleLocationID}) {
                 </ul>
                    
             </div>
-
-           
-
             
             <Button onClick={() => handleLocationID(details.place_id)} className='w-full my-3'>Know More</Button>
             

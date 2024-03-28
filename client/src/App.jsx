@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-import { Toaster } from 'react-hot-toast';
+import { useDispatch } from "react-redux";
+import { userRegister } from "./store/userSlice";
 
 function App() {
-  const [data, setData] = useState(null);
   const [contentLoaded, setContentLoaded] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -16,7 +17,12 @@ function App() {
     return () => clearTimeout(timeoutId);
   }, []);
 
-  console.log('Data:', data);
+  const userData = localStorage.getItem('geo-user');
+  useEffect(() => {
+    if(userData) {
+      dispatch(userRegister({ userData: userData }));
+    }
+  }, []);
 
   return (
     <div data-theme='light' >

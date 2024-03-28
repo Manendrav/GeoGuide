@@ -5,7 +5,6 @@ import Map from "../components/Map";
 import customQuery from "../components/customQuery";
 import toast from "react-hot-toast";
 // icons start here
-import { FiSearch } from "react-icons/fi";
 import { FaShoppingCart, FaTree, FaParking, FaToiletPaper, FaWheelchair, FaGasPump, FaPlane, FaBuilding, FaClinicMedical } from "react-icons/fa";
 import { IoFastFoodSharp, IoLibrary, IoSchool } from "react-icons/io5";
 import { MdLocalHotel, MdLocalAtm } from "react-icons/md";
@@ -19,65 +18,36 @@ import { GiForkKnifeSpoon, GiCook } from "react-icons/gi";
 import { HiBuildingOffice2 } from "react-icons/hi2";
 import { RxCross2 } from "react-icons/rx";
 import { RiHotelFill } from "react-icons/ri";
+import SearchCategory from "../components/searchCategory";
 
 export default function Explore() {
 
     const [loading, setLoading] = useState(false);
     const [location, setLocation] = useState();
-    const [search, setSearch] = useState(null);
+    const [search, setSearch] = useState([]);
     const [showDetails, setShowDetails] = useState(false);
     const [locationId, setLocationId] = useState(null);
     const [routeCoordinates, setRouteCoordinates] = useState();
     const inputRef = React.createRef();
-
     const [userLocationData, nearbyLocationData, locationDetailes, routeData, error] = customQuery(location, search, locationId, routeCoordinates);
 
 
-    console.log(userLocationData)
-    console.log(nearbyLocationData)
-    console.log(locationDetailes)
-    console.log(typeof (locationDetailes))
-    console.log(routeData)
-    console.log(typeof (routeData))
-
-
-
     //* ---------> Search Functionality <--------- *//
-    const handleInputChange = () => {
-        if (inputRef.current.value) {
-            setSearch(inputRef.current.value);
-            inputRef.current.value = '';
-        }
-    };
-
     const handleCategory = (category) => {
-        setSearch(category);
+        setSearch([category]);                // it is setting value
     }
 
-    console.log(search);
-
-    const handleKeyDown = (event) => {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            handleInputChange();
-        }
-    };
-
-    const handleSearch = () => {
+    function handleSearch (category) {
         event.preventDefault();
-        handleInputChange();
+        setSearch(category)                 // it is setting array
     };
-
 
 
     //* ---------> Get Location ID <--------- *//
     function handleLocationID(id) {
-        console.log(id);
         setLocationId(id);
         setShowDetails(true);
     }
-
-    console.log(showDetails)
 
     function handleShowDetails() {
         setShowDetails(false);
@@ -85,7 +55,6 @@ export default function Explore() {
 
 
     //* ---------> Get Route Coordinate <--------- *//
-
     function handleRouteCoordinates() {
         const { lat, lon } = locationDetailes;
         if (lat && lon) {
@@ -95,10 +64,6 @@ export default function Explore() {
         }
     }
 
-    console.log(routeCoordinates);
-
-
-
     //* ---------> Error Handling <--------- *//
 
     if (userLocationData === null || userLocationData === undefined) {
@@ -107,11 +72,7 @@ export default function Explore() {
         }, 5000);
     }
 
-    if (error) {
-        setTimeout(() => {
-            toast.error('An error occurred. Please try again later!!!');
-        }, 3000);
-    }
+   
 
     //* ---------> Set Category icon in Location detailes <--------- *//
 
@@ -191,8 +152,6 @@ export default function Explore() {
         }
     }, []);
 
-    console.log(location);
-
 
     return (
         <div className="mapview border-2 border-red-500 p-3">
@@ -200,22 +159,12 @@ export default function Explore() {
 
             <div className="">
                 <div className="flex flex-col min-h-screen">
-                    <div className="max-w-6xl mx-auto flex items-center h-16 border-b shrink-0 ">
+                    <div className="max-w-6xl mx-auto flex my-5 items-center h-16 border-b shrink-0 ">
                         <form className="flex-1 flex gap-3 ml-4 md:ml-auto md:mr-4 lg:mr-6">
-                            <div className="relative p-1 px-5 flex items-center gap-3 w-[40rem] rounded-lg text-sm bg-gray-100 duration-200 ease-in-out">
-                                <p><FiSearch size="1.5em" /></p>
-                                <input
-                                    className="w-full py-2 outline-none text-gray-500 bg-transparent text-sm duration-200 ease-in-out"
-                                    placeholder="Search..."
-                                    type="search"
-                                    ref={inputRef}
-                                    onKeyDown={handleKeyDown}
-                                />
-                            </div>
-
-                            <Button onClick={handleSearch} >Search</Button>
+                            <SearchCategory handleSearch={handleSearch} />
                         </form>
                     </div>
+                    
                     <main className="flex-1 flex flex-col min-h-[calc(100vh_-_theme(spacing.16))] mt-5">
                         <div className="grid relative gap-4">
 

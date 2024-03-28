@@ -4,22 +4,12 @@ import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import serviceMarker from '../../public/loc.svg';
 import myMarker from '../../public/myLoc.png';
+import routeMark from '../../public/routemark.png';
 import { Icon, map } from 'leaflet'
 import LocationDetailes from './LocationDetailes';
 import L from 'leaflet';
 
 const Map = ({ nearbyLocationData, location, routeData, handleLocationID }) => {
-
-    console.log(routeData)
-
-    const turnByTurnMarkerStyle = {
-        radius: 8,
-        fillColor: "white",
-        color: "red",
-        weight: 0,
-        opacity: 1,
-        fillOpacity: 1
-    };
 
     // Render legs
     const renderLegs = () => {
@@ -53,6 +43,22 @@ const Map = ({ nearbyLocationData, location, routeData, handleLocationID }) => {
         iconUrl: myMarker,
         iconSize: [42, 42]
     });
+
+    const routeIcon = new Icon({
+        iconUrl: routeMark,
+        iconSize: [42, 42]
+    });
+
+    const turnByTurnMarkerStyle = {
+        radius: 8,
+        fillColor: "white",
+        color: "red",
+        weight: 0,
+        opacity: 1,
+        fillOpacity: 1
+    };
+
+
 
     if (!location) {
         return null; // Render nothing if location is not available
@@ -111,7 +117,7 @@ const Map = ({ nearbyLocationData, location, routeData, handleLocationID }) => {
             {
                 Object.keys(routeData).length > 0 && (
                     Array.isArray(routeData.properties.waypoints) && routeData.properties.waypoints.map((waypoint, index) => (
-                        <Marker key={index} position={[waypoint.lat, waypoint.lon]} icon={serviceLoc} />
+                        <Marker key={index} position={[waypoint.lat, waypoint.lon]} icon={routeIcon} />
                     ))
                 )
             }
