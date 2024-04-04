@@ -21,7 +21,7 @@ export default function Navbar() {
         <div>
             <div className="navbar max-w-6xl mx-auto">
                 <div className="flex-1">
-                   <Link to={'/'} ><h1 className="text-2xl font-semibold cursor-pointer">GEO-GUIDE</h1></Link> 
+                   <Link to={'/'} ><img src='../geologo.png' width={120} className="text-2xl font-semibold cursor-pointer"/></Link> 
                 </div>
                 <div className="flex-none gap-5">
                     <ul className='flex gap-7 font-semibold uppercase text-sm'>
