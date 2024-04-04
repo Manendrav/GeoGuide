@@ -88,7 +88,7 @@ const SearchCategory = ({ handleSearch }) => {
 
 
     return (
-        <div className='flex items-center w-[50rem] gap-5 text-sm my-5'>
+        <div className='flex items-center w-[55vw] gap-5 text-sm my-5'>
             <div className="relative w-[90%] flex items-center rounded-lg p-2 px-5 gap-3 bg-gray-100">
                 <p><FiSearch size="1.5em" /></p>
                 <div className="flex gap-2 flex-wrap">

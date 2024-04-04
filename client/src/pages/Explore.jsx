@@ -231,7 +231,7 @@ export default function Explore() {
 
                                 </div>
 
-                                <div className="userLoc absolute p-3 shadow-xl shadow-gray-500 z-[5] bottom-[2rem] left-[7rem] rounded-lg h-[25rem] w-[20rem] backdrop-blur-md">
+                                <div className="userLoc absolute p-3 shadow-xl shadow-gray-500 z-[5] bottom-[2rem] min-[600px]:left-[7rem] min-[300px]:left-5 rounded-lg h-[25rem] w-[20rem] backdrop-blur-md">
                                     <div className="h-full text-black backdrop-filter backdrop-blur-md backdrop-opacity-60 p-2 rounded-lg">
                                         {
                                             Object.keys(userLocationData).length > 0 ? (
