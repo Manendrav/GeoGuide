@@ -19,20 +19,22 @@ export default function customQuery(location, search, locationId, routeCoordinat
     // console.log(locationId);
     // console.log(routeCoordinates);
 
-    const {lat: routeLatitude, lon: routeLongitude} = routeCoordinates || {};
-    const fromWaypoint = [22.54111111,88.33777778];                             // latutude, longitude          // use location longitude and latitude
-    const toWaypoint = [routeLatitude,routeLongitude];                          // latitude, longitude          // fetch from the api
-    const category = search
-    if(search.length > 1 ){
-        console.log(`${category.join(',')}`)
-    }
- 
+  
     // Fetch services around the locations
     useEffect(() => {
         const fetchData = async () => {
             try {
                 setLoading(true);
                 const { latitude, longitude } = location || {};
+
+                const {lat: routeLatitude, lon: routeLongitude} = routeCoordinates || {};
+                const fromWaypoint = [22.54111111,88.33777778];                             // latutude, longitude          // use location longitude and latitude
+                const toWaypoint = [routeLatitude,routeLongitude];                          // latitude, longitude          // fetch from the api
+                const category = search
+                if(search.length > 1 ){
+                    console.log(`${category.join(',')}`)
+                }
+             
 
                 //* It gives the user current location details
                 if (location !== null && location !== undefined) {
@@ -78,4 +80,14 @@ export default function customQuery(location, search, locationId, routeCoordinat
     return [userLocationData, nearbyLocationData, locationDetailes, routeData, error];
 }
 
+/*
+    APIS:
+        const response = await axios.get(` https://api.geoapify.com/v2/place-details?lat=${latitude}&lon=${longitude}&features=details,building&apiKey=${apikey}`);
 
+        const response = await axios.get(`https://api.geoapify.com/v2/places?categories=${category}&filter=circle:${longitude},${latitude},5000&bias=proximity:${longitude},${latitude}&limit=40&apiKey=${apikey}`);
+
+        const response = await axios.get(`https://api.geoapify.com/v2/place-details?id=${locationId}&features=details&apiKey=${apikey}`);
+        
+        const response = await axios.get(`https://api.geoapify.com/v1/routing?waypoints=${fromWaypoint.join(',')}|${toWaypoint.join(',')}&mode=drive&details=instruction_details&apiKey=${apikey}`);
+
+*/

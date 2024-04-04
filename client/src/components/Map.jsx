@@ -126,15 +126,3 @@ const Map = ({ nearbyLocationData, location, routeData, handleLocationID }) => {
 };
 
 export default Map;
-
-
-/*
-    // coordiantes.map((coordinate, index) => (
-                //     <Marker key={index} position={[coordinate.lat, coordinate.lng]} icon={myIcon}>
-                //         <Popup>
-                //             A pretty CSS3 popup. <br /> Easily customizable.
-                //         </Popup>
-                //     </Marker>
-                // ))
-
-*/

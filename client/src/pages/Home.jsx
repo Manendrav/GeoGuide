@@ -18,7 +18,7 @@ export default function Home() {
         <main className="flex-1">
           <section className="w-full py-6 flex justify-center">
             <div className="container px-4 md:px-6 ">
-              <div className='flex items-center gap-10 '>
+              <div className='flex flex-col items-center md:flex-row min-[320px]:text-center min-[600px]:text-left gap-10 '>
                 <div className='tags'>
                   <h1 className="text-4xl ml-3 font-bold tracking-wide sm:text-5xl xl:text-5xl/none">Welcome to</h1>
                   <h3 className="text-4xl font-bold tracking-normal sm:text-5xl xl:text-8xl/none">GEO-GUIDE</h3>
@@ -50,7 +50,7 @@ export default function Home() {
               <h1>Features</h1>
             </div>
 
-            <div className='flex py-10 gap-10 text-center'>
+            <div className='flex py-10 gap-10 min-[320px]:flex-col min-[746px]:flex-row  text-center'>
               <div className="flex flex-col items-center py-14 justify-center bg-white border rounded-xl shadow-xl p-6 hover:bg-[#bc76fd] text-gray-400 hover:text-white transition ease-in">
                 <div className="text-4xl mb-4 bg-purple-400 text-white rounded-full p-3">{<FaUsers size="0.9em" />}</div>
                 <h2 className="text-xl font-semibold mb-2 text-gray-800">Tailored Suggestions</h2>
@@ -164,15 +164,15 @@ export default function Home() {
             <h2 className="text-2xl font-bold text-center mb-10 uppercase tracking-wide2 sm:text-4xl">Contact US</h2>
               <div className="grid items-center gap-6 lg:grid-cols-[1fr_500px] lg:gap-12 xl:grid-cols-[1fr_550px]">
                 <div className="flex flex-col justify-center space-y-4">
-                  <div className="space-y-2">
+                  <div className="space-y-2 min-[320px]:text-center min-[700px]:text-left">
                     <h2 className="text-3xl ml-1 font-bold tracking-tighter sm:text-4xl">We'd love to hear from you.</h2>
                     <p className="max-w-[600px] ml-2 text-gray-500 md:text-xl/relaxed lg:text-base/relaxed dark:text-gray-400">
                       Let us know how we can help. Fill out the form below and we'll get back to you as soon as possible.
                     </p>
                   </div>
-                   <div className="mt-6 flex max-w-md gap-x-4">
+                   <div className="mt-6 flex max-w-md gap-x-4 mx-auto">
                     <label htmlFor="email-address" className="sr-only">Email address</label>
-                    <input id="email-address" name="email" type="email" autoComplete="email" required className="min-w-0 flex-auto rounded-lg border bg-white/5 px-3.5 py-2 text-gray-400 shadow-sm focus:outline-purple-400 sm:text-sm sm:leading-6" placeholder="Enter your email" />
+                    <input id="email-address" name="email" type="email" autoComplete="email" required className="min-w-0 flex-auto rounded-lg border w-[20rem] bg-white/5 px-3.5 py-2 text-gray-400 shadow-sm focus:outline-purple-400 sm:text-sm sm:leading-6" placeholder="Enter your email" />
                     <Button type="submit">Contact</Button>
                   </div>
                 </div>
@@ -180,7 +180,7 @@ export default function Home() {
                 <div>
                   <img
                     alt="Image"
-                    className="mx-auto overflow-hidden rounded-xl sm:w-full"
+                    className="mx-auto overflow-hidden rounded-xl min-[320px]:w-full"
                     loading='lazy'
                     src="/contact.png"
                     width="50"
