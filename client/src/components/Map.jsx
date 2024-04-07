@@ -68,8 +68,8 @@ const Map = ({ nearbyLocationData, location, routeData, handleLocationID }) => {
 
     return (
         <MapContainer
-            key={[22.54111111, 88.33777778]}                         // Here why i use two time? -> MapContainer component doesn't automatically re-render when its center prop changes.
-            center={[22.54111111, 88.33777778]}                      // To ensure that the map re-renders when the center prop changes, we have to use the key prop to force a re-render.
+            key={[latitude, longitude]}                         // Here why i use two time? -> MapContainer component doesn't automatically re-render when its center prop changes.
+            center={[latitude, longitude]}                      // To ensure that the map re-renders when the center prop changes, we have to use the key prop to force a re-render.
             zoom={16}
             style={{ height: '100%', width: '100%' }}
         >
@@ -87,7 +87,7 @@ const Map = ({ nearbyLocationData, location, routeData, handleLocationID }) => {
                 ))
 
             }
-            <Marker position={[22.54111111, 88.33777778]} icon={myIcon}></Marker>
+            <Marker position={[latitude, longitude]} icon={myIcon}></Marker>
             {
                 Object.keys(routeData).length > 0 && (
                     <GeoJSON

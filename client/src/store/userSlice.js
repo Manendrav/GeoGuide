@@ -5,8 +5,6 @@ const initialState = {
     userData: null,
 };
 
-console.log(initialState);
-
 const userSlice = createSlice({
     name: "auth",
     initialState,

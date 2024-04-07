@@ -154,7 +154,7 @@ export default function Explore() {
 
 
     return (
-        <div className="mapview border-2 border-red-500 p-3">
+        <div className="mapview border-2 p-3">
             <div className="layer"></div>
 
             <div className="">
@@ -219,7 +219,7 @@ export default function Explore() {
 
 
 
-                            <div className="flex flex-col gap-2 md:col-span-2 min-h-screen w-full">
+                            <div className="flex flex-col gap-2 md:col-span-2 w-full">
                                 <div className="flex justify-center items-center rounded-xl z-[0] min-h-screen overflow-hidden border-2 w-full">
                                     {
                                         loading ? (
