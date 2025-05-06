@@ -5,9 +5,7 @@ import Button from '../components/layout/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { loginRoute } from '../utils/APIRoutes';
-
 import { useDispatch, useSelector } from 'react-redux';
-
 import axios from 'axios';
 import { userRegister } from '../store/userSlice';
 
@@ -27,9 +25,7 @@ function Login() {
             try {
                 const response = await axios.post(loginRoute, data);
                 const userData = response.data.user;
-
                 dispatch(userRegister({ userData: userData }));
-
                 toast.success('Login Successfully!!!');
                 localStorage.setItem('geo-user', JSON.stringify(userData));
                 navigate('/');
