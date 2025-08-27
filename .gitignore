@@ -23,4 +23,14 @@ dist-ssr
 *.sln
 *.sw?
 
+# Go build
+/tmp
+*.exe
+*.out
+*.test
+
+# Air tmp dir
+tmp/
+
+# Env files
 *.env
